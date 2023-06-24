@@ -1,12 +1,15 @@
-import "./App.css";
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { AppRoutes } from './AppRoutes';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
+const client = new QueryClient();
 
 function App() {
   return (
-    <>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <QueryClientProvider client={client}>
+      <AppRoutes />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </QueryClientProvider>
   );
 }
 
