@@ -63,9 +63,12 @@ export function useUserCreate() {
     } catch (e: any) {
       console.log(e.message);
       alert('오류 발생');
+
+      return;
     }
 
     alert('생성 성공');
+    reset();
   };
 
   return {
