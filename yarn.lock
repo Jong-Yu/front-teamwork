@@ -928,6 +928,11 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
+jotai@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.2.1.tgz#0a95b88c5f3ea4fd656b5f79af6f84e895f84f5a"
+  integrity sha512-Gz4tpbRQy9OiFgBwF9F7TieDn0UTE3C0IFSDuxHjOIvgn2tACH30UKz6p/wIlfoZROXSTCIxEvYEa7Y25WM+8g==
+
 js-sha3@0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.8.0.tgz#b9b7a5da73afad7dedd0f8c463954cbde6818840"
