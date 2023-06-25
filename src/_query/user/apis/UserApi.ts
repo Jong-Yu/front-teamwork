@@ -7,5 +7,5 @@ export function getUsers(): Promise<UesrDTO[]> {
 }
 
 export function createUesr(createUserDto: CreateUserDTO) {
-  return axios.post('/api/user', createUserDto);
+  return axios.post('/api/user/create', createUserDto);
 }
