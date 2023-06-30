@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import pwaConfig from './pwa.config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), pwaConfig()],
+  plugins: [react()],
   server: {
     proxy: {
       '/api': {
