@@ -1,6 +1,12 @@
-$mobile: 768px;
+$mobile: 639px;
 $tablet: 1023px;
 $desktop: 1024px;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 @mixin mobile {
   @media (max-width: $mobile) {
@@ -14,14 +20,19 @@ $desktop: 1024px;
   }
 }
 
+.header.nav {
+  height: 60px;
+}
+
+.header.nav > .inner_container {
+  padding: 0 30px;
+  height: inherit;
+  display: flex;
+  align-items: center;
+}
+
 @include mobile {
-  .header.layout {
-    background-color: red;
-  }
 }
 
 @include tablet {
-  .header.layout {
-    background-color: blue;
-  }
 }
