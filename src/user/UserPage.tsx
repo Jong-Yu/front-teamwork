@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { useGoPush } from '../shared/hooks/history/History.hooks';
+import { useGoPush } from '../shared/hooks/History/History.hooks';
 
 export const UserPage = () => {
   // hooks

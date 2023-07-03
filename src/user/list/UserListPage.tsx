@@ -1,3 +1,5 @@
+import { Container } from '../../shared/ui/Container/Container';
+import { Table } from '../../shared/ui/Container/Table';
 import { useUserList } from './hooks/useUserList';
 
 export const UserListPage = () => {
@@ -5,50 +7,52 @@ export const UserListPage = () => {
   const { users } = useUserList();
 
   return (
-    <>
-      <h1>User 목록</h1>
+    <Container>
+      <div className="container--inner">
+        <h1>User 목록</h1>
 
-      <table style={{ minWidth: '800px', border: '1px solid #000' }}>
-        <colgroup>
-          <col width="25%" />
-          <col width="25%" />
-          <col width="25%" />
-          <col width="25%" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>이름</th>
-            <th>이메일</th>
-            <th>전화번호</th>
-            <th>나이</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.length > 0 ? (
-            <>
-              {users.map(user => (
-                <tr>
-                  <td>{user.name || ''}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone || '-'}</td>
-                  <td>{user.age}</td>
-                </tr>
-              ))}
-            </>
-          ) : (
-            <>
-              <tr>
-                <td
-                  colSpan={4}
-                  style={{ height: '300px', textAlign: 'center' }}
-                >
-                  검색결과 없음.
-                </td>
-              </tr>
-            </>
-          )}
-        </tbody>
-      </table>
-    </>
+        <Table style={{ width: '100%', border: '1px solid #000' }}>
+          <colgroup>
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+          </colgroup>
+          <Table.Head>
+            <Table.Row>
+              <Table.Header>이름</Table.Header>
+              <Table.Header>이메일</Table.Header>
+              <Table.Header>전화번호</Table.Header>
+              <Table.Header>나이</Table.Header>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            {users.length > 0 ? (
+              <>
+                {users.map(user => (
+                  <Table.Row>
+                    <Table.Data>{user.name || ''}</Table.Data>
+                    <Table.Data>{user.email}</Table.Data>
+                    <Table.Data>{user.phone || '-'}</Table.Data>
+                    <Table.Data>{user.age}</Table.Data>
+                  </Table.Row>
+                ))}
+              </>
+            ) : (
+              <>
+                <Table.Row>
+                  <Table.Data
+                    colSpan={4}
+                    style={{ height: '300px', textAlign: 'center' }}
+                  >
+                    검색결과 없음.
+                  </Table.Data>
+                </Table.Row>
+              </>
+            )}
+          </Table.Body>
+        </Table>
+      </div>
+    </Container>
   );
 };

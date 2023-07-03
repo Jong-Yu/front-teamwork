@@ -1,3 +1,10 @@
+import { HeaderMenu } from './HeaderMenu';
+
 export const DeskTop = () => {
-  return <div>DeskTop</div>;
+  return (
+    <>
+      <HeaderMenu />
+      <div className="">Icon</div>
+    </>
+  );
 };

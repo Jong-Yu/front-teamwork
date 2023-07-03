@@ -1,11 +1,19 @@
 $mobile: 639px;
-$tablet: 1023px;
-$desktop: 1024px;
+
+// padding
+$--padding--container-base: 48px;
 
 html,
-body {
+body,
+ul,
+ol {
   margin: 0;
   padding: 0;
+}
+
+ol,
+ul {
+  list-style-type: none;
 }
 
 @mixin mobile {
@@ -14,25 +22,59 @@ body {
   }
 }
 
-@mixin tablet {
-  @media (min-width: ($mobile + 1)) and (max-width: $tablet) {
-    @content;
-  }
+// Layout
+.app_layout {
+  min-height: 100vh;
 }
 
-.header.nav {
+// Navbar
+.navbar {
   height: 60px;
+  width: 100%;
 }
 
-.header.nav > .inner_container {
-  padding: 0 30px;
-  height: inherit;
+.navbar__container--inner {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-@include mobile {
+.navbar__contents {
 }
 
-@include tablet {
+.navbar__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navber__item {
+  padding: 0 8px;
+  color: #4e5968;
+  white-space: nowrap;
+}
+
+// Container
+.container {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.container--default {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.container--inner {
+  height: 100%;
+  margin: 0 auto;
+}
+
+.container--default > .container--inner {
+  width: 92%;
+  max-width: calc(100% - $--padding--container-base);
+}
+
+@include mobile {
 }
