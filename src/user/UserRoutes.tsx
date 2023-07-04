@@ -3,7 +3,7 @@ import { UserListPage } from './list/UserListPage';
 import { UserCreatePage } from './create/UserCreatePage';
 import { UserPage } from './UserPage';
 
-export const UserRoutes = () => {
+const UserRoutes = () => {
   return (
     <Routes>
       <Route path="*" Component={UserPage}>
@@ -13,3 +13,5 @@ export const UserRoutes = () => {
     </Routes>
   );
 };
+
+export default UserRoutes;
