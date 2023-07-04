@@ -11,6 +11,9 @@ export const HeaderMenu = () => {
         <li className="navbar__item">
           <a>고객센터</a>
         </li>
+        <li className="navbar__item">
+          <a>팀 관리</a>
+        </li>
       </ul>
     </div>
   );
