@@ -5,7 +5,7 @@ export const Scrolldown = () => {
   0% {
     opacity: 0;
     transform:
-      matrix(0.22,0,0,0.22,44,40);
+      matrix(0.21,0,0,0.22,40,20);
   }
   
   25% {
@@ -35,7 +35,7 @@ export const Scrolldown = () => {
   100% {
     opacity: 0;
     transform:
-    matrix(0.22,0,0,0.22,44,40);
+    matrix(0.31343966722488403,0,0,0.31343966722488403,11.139854431152344,20);
   }
   `;
 
