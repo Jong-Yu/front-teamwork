@@ -1,3 +1,3 @@
 export const authQueryKeys = {
-  loginKakao: ['loginKakao'],
+  loginKakao: (code: string) => ['loginKakao', code],
 } as const;

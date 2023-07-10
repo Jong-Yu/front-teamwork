@@ -6,7 +6,11 @@ export const AppLayout = () => {
   return (
     <div className="app_layout">
       <Header />
-      <main>
+      <main
+        css={{
+          paddingTop: '60px',
+        }}
+      >
         <Outlet />
       </main>
       <Footer />
