@@ -1,11 +1,15 @@
-import axios from 'axios';
+import { getAxios } from '../../../_shared/util/Axios/axios.util';
 import { UesrDTO } from '../models/UserDTO';
 import { CreateUserDTO } from '../models/CreateUserDTO';
 
 export function getUsers(): Promise<UesrDTO[]> {
-  return axios.get('/api/user').then(res => res.data);
+  const { get, axiosReturn } = getAxios();
+
+  return get('/api/user').then(axiosReturn);
 }
 
 export function createUesr(createUserDto: CreateUserDTO) {
-  return axios.post('/api/user/create', createUserDto);
+  const { post, axiosReturn } = getAxios();
+
+  return post('/api/user/create', createUserDto).then(axiosReturn);
 }

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { logoutKakao } from '../../_query/auth/api/AuthApi';
 import { useLoginKakao } from '../../_query/auth/authQuery';
+import { setAccessToken } from '../../_shared/util/storage/localstorage';
 
 export function useAuthPage() {
   // var
@@ -23,11 +24,9 @@ export function useAuthPage() {
   };
 
   useEffect(() => {
-    console.log('token', token);
-    console.log('code', code);
-
     if (!!token && !!code) {
-      localStorage.setItem('token', token);
+      console.log(token);
+      setAccessToken(token);
       window.location.href = 'login';
     }
   }, [token]);

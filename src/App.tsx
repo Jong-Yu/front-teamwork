@@ -1,10 +1,13 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { AppRoutes } from './AppRoutes';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { AppRoutes } from './AppRoutes';
+import { initApp } from './App.util';
 
 const client = new QueryClient();
 
 function App() {
+  initApp();
+
   return (
     <QueryClientProvider client={client}>
       <AppRoutes />

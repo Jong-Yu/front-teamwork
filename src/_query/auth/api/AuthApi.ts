@@ -1,23 +1,20 @@
-import axios from 'axios';
+import { getAxios } from '../../../_shared/util/Axios/axios.util';
 
 export async function loginKakao(code: string) {
-  return axios
-    .post(
-      '/api/auth/kakao',
-      { code },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+  const { post, axiosReturn } = getAxios();
+
+  return post(
+    '/api/auth/kakao',
+    { code },
+    {
+      headers: {
+        'Content-Type': 'application/json',
       },
-    )
-    .then(res => res.data);
+    },
+  ).then(axiosReturn);
 }
 
 export async function logoutKakao() {
-  const accessToken = localStorage.getItem('token');
-
-  return axios
-    .post('/api/auth/logout', { access_token: accessToken })
-    .then(res => res.data);
+  const { post, axiosReturn } = getAxios();
+  return post('/api/auth/logout').then(axiosReturn);
 }
