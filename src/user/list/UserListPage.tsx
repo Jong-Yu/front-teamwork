@@ -1,5 +1,5 @@
-import { Container } from '../../shared/ui/Container/Container';
-import { Table } from '../../shared/ui/Container/Table';
+import { Container } from '../../_shared/ui/Container/Container';
+import { Table } from '../../_shared/ui/Table';
 import { useUserList } from './hooks/useUserList';
 
 export const UserListPage = () => {

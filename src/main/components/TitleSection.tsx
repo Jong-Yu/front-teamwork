@@ -1,5 +1,5 @@
 import { keyframes } from '@emotion/react';
-import { MOBILE_MEDIA } from '../../shared/hooks/Responsive/Responsive.hooks';
+import { MOBILE_MEDIA } from '../../_shared/hooks/Responsive/Responsive.hooks';
 import { Scrolldown } from './scrolldown';
 import { useRef } from 'react';
 
