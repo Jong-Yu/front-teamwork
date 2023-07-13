@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { logoutKakao } from '../../_query/auth/api/AuthApi';
+import { useLocation } from 'react-router-dom';
 import { useLoginKakao } from '../../_query/auth/authQuery';
-import { setAccessToken } from '../../_shared/util/storage/localstorage';
+import { setAccessToken } from '../../_shared/util/Storage/localstorage';
+import { useGoPush } from '../../_shared/hooks/History/History.hooks';
 
 export function useAuthPage() {
   // var
@@ -9,6 +10,8 @@ export function useAuthPage() {
 
   // hooks
   const { data: token } = useLoginKakao(code);
+  const location = useLocation();
+  const goPush = useGoPush();
 
   // function
   const onClickLoginKakao = () => {
@@ -19,20 +22,23 @@ export function useAuthPage() {
     window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
   };
 
-  const onClickLogOut = () => {
-    logoutKakao();
-  };
-
   useEffect(() => {
     if (!!token && !!code) {
-      console.log(token);
       setAccessToken(token);
-      window.location.href = 'login';
+
+      const previousPage = location.state?.from;
+
+      console.log(previousPage);
+
+      if (previousPage && previousPage !== '/login') {
+        goPush(previousPage);
+      } else {
+        goPush('/main');
+      }
     }
   }, [token]);
 
   return {
     onClickLoginKakao,
-    onClickLogOut,
   };
 }

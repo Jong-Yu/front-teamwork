@@ -1,10 +1,11 @@
 import { HeaderMenu } from './HeaderMenu';
+import { HeaderButtons } from './HeaderButtons';
 
 export const DeskTop = () => {
   return (
     <>
       <HeaderMenu />
-      <div className="">Icon</div>
+      <HeaderButtons />
     </>
   );
 };

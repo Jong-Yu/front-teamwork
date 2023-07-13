@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getAccessToken, setAccessToken } from '../storage/localstorage';
+import { getAccessToken, setAccessToken } from '../Storage/localstorage';
+import { refresh } from '../../../_query/auth/api/AuthApi';
 
 // 파라미터를 시리얼라이즈하는 헬퍼 함수
 function paramsSerializer(paramObj: Record<string, any>) {
@@ -139,11 +140,12 @@ export function initAxios() {
       if (!errorResponse) return Promise.reject(error);
       if (!isAlreadyFetchingAccessToken) {
         isAlreadyFetchingAccessToken = true;
-        axios.post('/api/auth/refresh').then(res => {
-          isAlreadyFetchingAccessToken = false;
-          setAccessToken(res.data);
-          onAccessTokenFetched(res.data);
-        });
+
+        const accessToken = await refresh();
+
+        isAlreadyFetchingAccessToken = false;
+        setAccessToken(accessToken);
+        onAccessTokenFetched(accessToken);
       }
       const retryOriginalRequest = new Promise(resolve => {
         addSubscriber(access_token => {
