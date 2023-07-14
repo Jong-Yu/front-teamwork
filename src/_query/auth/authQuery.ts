@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from 'react-query';
-import { loginKakao, logout } from './api/AuthApi';
+import { isValidToken, loginKakao, logout } from './api/AuthApi';
 import { authQueryKeys } from './authQueryKeys';
 
 export function useLoginKakao(code: string) {
@@ -10,4 +10,8 @@ export function useLoginKakao(code: string) {
 
 export function useLogout_Mutate() {
   return useMutation(() => logout());
+}
+
+export function useIsValid() {
+  return useQuery(authQueryKeys.isValid, () => isValidToken());
 }

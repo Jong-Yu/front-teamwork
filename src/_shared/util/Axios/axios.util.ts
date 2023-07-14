@@ -123,7 +123,8 @@ export function initAxios() {
     return (
       errorResponse &&
       errorResponse.status === 401 &&
-      errorResponse.data.message === 'refresh token expired'
+      (errorResponse.data.message === 'refresh token expired' ||
+        errorResponse.data.message === 'none refresh token')
     );
   }
 
