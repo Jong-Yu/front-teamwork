@@ -12,7 +12,7 @@ export const HeaderMenu = () => {
           <a>고객센터</a>
         </li>
         <li className="navbar__item">
-          <a>팀 관리</a>
+          <a href="/team/list">팀 관리</a>
         </li>
       </ul>
     </div>

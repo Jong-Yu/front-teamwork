@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLoginKakao } from '../../_query/auth/authQuery';
-import { setAccessToken } from '../../_shared/util/Storage/localstorage';
-import { useGoPush } from '../../_shared/hooks/History/History.hooks';
+import { useGoReplace } from '../../_shared/hooks/History/History.hooks';
 
 export function useAuthPage() {
   // var
@@ -11,11 +10,10 @@ export function useAuthPage() {
   // hooks
   const { data: token } = useLoginKakao(code);
   const location = useLocation();
-  const goPush = useGoPush();
+  const goReplace = useGoReplace();
 
   // function
   const onClickLoginKakao = () => {
-    // loginKakao();
     const clientId = import.meta.env.VITE_KAKAO_CLIENT_ID;
     const redirectUri = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
@@ -24,16 +22,12 @@ export function useAuthPage() {
 
   useEffect(() => {
     if (!!token && !!code) {
-      setAccessToken(token);
-
       const previousPage = location.state?.from;
 
-      console.log(previousPage);
-
       if (previousPage && previousPage !== '/login') {
-        goPush(previousPage);
+        goReplace(previousPage);
       } else {
-        goPush('/main');
+        goReplace('/main');
       }
     }
   }, [token]);

@@ -1,7 +1,10 @@
-import { isLogin } from '../../../_shared/util/Storage/localstorage';
+import { useHeaderButtons } from '../hooks/useHeaderButtons';
 import { Login } from './Login';
 import { Logout } from './Logout';
 
 export const HeaderButtons = () => {
-  return <div>{isLogin() ? <Logout /> : <Login />}</div>;
+  // hooks
+  const { isValied } = useHeaderButtons();
+
+  return <div>{isValied ? <Logout /> : <Login />}</div>;
 };

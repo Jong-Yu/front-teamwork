@@ -9,9 +9,9 @@ export function useLoginKakao(code: string) {
 }
 
 export function useLogout_Mutate() {
-  return useMutation(() => logout());
+  return useMutation(logout);
 }
 
-export function useIsValid() {
-  return useQuery(authQueryKeys.isValid, () => isValidToken());
+export function useIsValid_Mutate() {
+  return useMutation(isValidToken);
 }

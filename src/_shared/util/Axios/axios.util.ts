@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getAccessToken, setAccessToken } from '../Storage/localstorage';
 import { refresh } from '../../../_query/auth/api/AuthApi';
 
 // 파라미터를 시리얼라이즈하는 헬퍼 함수
@@ -14,10 +13,6 @@ function paramsSerializer(paramObj: Record<string, any>) {
 }
 
 export function getAxios() {
-  const access_token = getAccessToken();
-
-  // 공통 헤더 설정
-  axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
   axios.defaults.paramsSerializer = paramsSerializer;
 
   // HTTP GET 요청을 처리하는 함수
@@ -132,7 +127,7 @@ export function initAxios() {
   let isAlreadyFetchingAccessToken = false;
 
   // JWT 갱신이 완료된 후 재시도할 요청들의 목록
-  let subscribers: Array<(token: string) => void> = [];
+  let subscribers: Array<() => void> = [];
 
   // 토큰을 재설정하고 원래의 요청을 재시도하는 함수
   async function resetTokenAndReattemptRequest(error: AxiosError) {
@@ -141,16 +136,12 @@ export function initAxios() {
       if (!errorResponse) return Promise.reject(error);
       if (!isAlreadyFetchingAccessToken) {
         isAlreadyFetchingAccessToken = true;
-
-        const accessToken = await refresh();
-
+        await refresh();
         isAlreadyFetchingAccessToken = false;
-        setAccessToken(accessToken);
-        onAccessTokenFetched(accessToken);
+        onAccessTokenFetched();
       }
       const retryOriginalRequest = new Promise(resolve => {
-        addSubscriber(access_token => {
-          errorResponse.config.headers.Authorization = 'Bearer ' + access_token;
+        addSubscriber(() => {
           resolve(axios(errorResponse.config));
         });
       });
@@ -161,13 +152,13 @@ export function initAxios() {
   }
 
   // 토큰 갱신이 성공하면 대기 중인 요청들을 재시도하고 대기열을 비우는 함수
-  function onAccessTokenFetched(access_token: string) {
-    subscribers.forEach(callback => callback(access_token));
+  function onAccessTokenFetched() {
+    subscribers.forEach(callback => callback());
     subscribers = [];
   }
 
   // 대기 중인 요청들의 목록에 새 요청을 추가하는 함수
-  function addSubscriber(callback: (token: string) => void) {
+  function addSubscriber(callback: () => void) {
     subscribers.push(callback);
   }
 
