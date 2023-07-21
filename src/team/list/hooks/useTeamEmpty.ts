@@ -1,12 +1,12 @@
-import { useGoPush } from '../../../_shared/hooks/History/History.hooks';
+import { useTeamCreateModal } from '../../create/hooks/useTeamCreateModal';
 
 export function useTeamEmpty() {
   // hooks
-  const goPush = useGoPush();
+  const { onOpen } = useTeamCreateModal();
 
   // handlers
   const onClickCreateButton = () => {
-    goPush('/team/create');
+    onOpen();
   };
 
   return {
