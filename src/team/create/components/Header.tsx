@@ -1,26 +1,49 @@
 import styled from '@emotion/styled';
-import { HeaderContainer } from '../../../_shared/ui/Header/Header';
 
 const Div = styled.div({
-  height: '100%',
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'space-between',
+  alignItems: 'center',
 });
 
-const Span = styled.span({
-  fontFamily: "'Kanit', sans-serif",
+const Title = styled.span({
   fontSize: '1.2rem',
-  fontWeight: 'bold',
-  padding: '0 20px',
+  fontWeight: 500,
 });
 
-export const Header = () => {
+const ExitButton = styled.span({
+  position: 'relative',
+  width: '32px',
+  height: '32px',
+  cursor: 'pointer',
+  '&:after, &:before': {
+    position: 'absolute',
+    left: '15px',
+    top: '5px',
+    content: "''",
+    height: '24px',
+    width: '1px',
+    backgroundColor: '#282B33',
+    transform: 'rotate(-45deg)',
+  },
+  '&:before': {
+    transform: 'rotate(45deg)',
+  },
+  '&:hover': {
+    transform: 'opacity(0.3)',
+  },
+});
+
+interface HeaderProps {
+  title: string;
+  onClose: () => void;
+}
+
+export const Header = ({ title, onClose }: HeaderProps) => {
   return (
-    <HeaderContainer>
-      <Div>
-        <Span>팀 생성</Span>
-      </Div>
-    </HeaderContainer>
+    <Div>
+      <Title>{title}</Title>
+      <ExitButton onClick={onClose} />
+    </Div>
   );
 };

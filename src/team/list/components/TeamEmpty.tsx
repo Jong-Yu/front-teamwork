@@ -6,7 +6,7 @@ const Conatiner = styled.div({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  height: '100%',
+  minHeight: 'calc(100vh - 60px)',
 });
 
 const CreateButton = styled.button({
