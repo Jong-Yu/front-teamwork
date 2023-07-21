@@ -1,4 +1,4 @@
-import { useLogout_Mutate } from '../../../_query/auth/authQuery';
+import { useLogout_Mutate } from '../../../../_query/auth/authQuery';
 import { useGoPush } from '../../../_shared/hooks/History/History.hooks';
 
 export const useLogout = () => {

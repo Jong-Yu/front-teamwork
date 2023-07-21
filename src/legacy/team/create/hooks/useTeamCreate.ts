@@ -5,7 +5,7 @@ import {
   teamLogoAtom,
   teamNameAtom,
 } from '../TeamCreate.atom';
-import { useTeamCreate_Mutate } from '../../../_query/team/TeamQuerys';
+import { useTeamCreate_Mutate } from '../../../../_query/team/TeamQuerys';
 
 export function useTeamCreate() {
   // atom

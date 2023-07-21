@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useLoginKakao } from '../../_query/auth/authQuery';
+import { useLoginKakao } from '../../../_query/auth/authQuery';
 import { useGoReplace } from '../../_shared/hooks/History/History.hooks';
 
 export function useAuthPage() {

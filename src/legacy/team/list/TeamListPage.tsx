@@ -1,4 +1,4 @@
-import { useFindMyTeam } from '../../_query/team/TeamQuerys';
+import { useFindMyTeam } from '../../../_query/team/TeamQuerys';
 
 export const TeamListPage = () => {
   // hooks

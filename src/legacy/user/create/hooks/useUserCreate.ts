@@ -8,7 +8,7 @@ import {
   userPhone3Atom,
   userPhoneAtom,
 } from '../UserCreate.atom';
-import { useCreaetUser_Mutate } from '../../../_query/user/UserQuerys';
+import { useCreaetUser_Mutate } from '../../../../_query/user/UserQuerys';
 
 export function useUserCreate() {
   // atom

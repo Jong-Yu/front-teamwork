@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { refresh } from '../../../_query/auth/api/AuthApi';
 
 // 파라미터를 시리얼라이즈하는 헬퍼 함수
 function paramsSerializer(paramObj: Record<string, any>) {
@@ -101,7 +100,7 @@ export function getAxios() {
   };
 }
 
-export function initAxios() {
+export function initAxios(refresh: () => Promise<void>) {
   // 토큰 만료 에러인지 확인하는 함수
   function isTokenExpiredError(errorResponse?: AxiosResponse): boolean {
     if (!errorResponse) return false;
