@@ -5,6 +5,7 @@ const Span = styled.span({
   fontSize: '2.2rem',
   lineHeight: '2.5rem',
   animation: `0.5s ease-in-out 0s 1 normal forwards running`,
+  marginBottom: '1rem',
 });
 
 interface SubTitleProps {

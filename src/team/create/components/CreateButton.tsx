@@ -13,10 +13,10 @@ const Button = styled.button({
   height: '2.5rem',
 });
 
-interface NextButtonProps {
+interface CreateButtonProps {
   onClick: () => void;
 }
 
-export const NextButton = ({ onClick }: NextButtonProps) => {
-  return <Button onClick={onClick}>다음</Button>;
+export const CreateButton = ({ onClick }: CreateButtonProps) => {
+  return <Button onClick={onClick}>생성</Button>;
 };

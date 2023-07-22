@@ -12,7 +12,7 @@ const Span = styled.span({
   fontFamily: "'Kanit', sans-serif",
   fontSize: '1.2rem',
   fontWeight: 'bold',
-  padding: '0 20px',
+  padding: '0 30px',
 });
 
 export const Header = () => {
