@@ -5,22 +5,37 @@ const Card = styled.div({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-start',
-  alignItems: 'center',
   padding: '16px 0px',
   borderBottom: '1px solid #e6ecf1',
+  cursor: 'pointer',
 });
 
-const TeamLogo = styled.img({});
+const LogoContainer = styled.div({
+  width: ' 3.5rem',
+  height: '3.5rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginRight: '1rem',
+});
+
+const TeamLogo = styled.img({
+  width: '100%',
+  height: '100%',
+});
 
 const TeamInfoContainer = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'flex-start',
 });
 
-const TeamName = styled.span({});
+const TeamName = styled.span({
+  userSelect: 'none',
+});
 
-const TeamDesc = styled.span({});
+const TeamDesc = styled.span({
+  userSelect: 'none',
+});
 
 interface TeamCardProps {
   team: TeamDto;
@@ -29,7 +44,9 @@ interface TeamCardProps {
 export const TeamCard = ({ team }: TeamCardProps) => {
   return (
     <Card>
-      <TeamLogo src={team.logo} />
+      <LogoContainer>
+        <TeamLogo src={team.logo} />
+      </LogoContainer>
       <TeamInfoContainer>
         <TeamName>{team.name}</TeamName>
         <TeamDesc>{team.desc}</TeamDesc>
