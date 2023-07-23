@@ -20,7 +20,7 @@ export const TeamList = () => {
       {myTeams && myTeams.length > 0 && (
         <>
           {myTeams?.map(team => (
-            <TeamCard team={team} />
+            <TeamCard key={team.id} team={team} />
           ))}
 
           <FixedCreateButton />

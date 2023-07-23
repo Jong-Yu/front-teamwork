@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { TeamDto } from '../../../_query/team/model/TeamDto';
+import { useTeamCard } from '../hooks/useTeamCard';
 
 const Card = styled.div({
   display: 'flex',
@@ -42,8 +43,11 @@ interface TeamCardProps {
 }
 
 export const TeamCard = ({ team }: TeamCardProps) => {
+  // hooks
+  const { onClickTeamCard } = useTeamCard();
+
   return (
-    <Card>
+    <Card onClick={() => onClickTeamCard(team.id)}>
       <LogoContainer>
         <TeamLogo src={team.logo} />
       </LogoContainer>
