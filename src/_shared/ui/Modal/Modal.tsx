@@ -30,6 +30,12 @@ const ModalContainer = styled.div({
   width: '30rem',
   margin: '0 30px',
   position: 'relative',
+
+  [`@media (max-width: ${import.meta.env.VITE_MOBILE_WIDTH})`]: {
+    width: '100%',
+    height: '100vh',
+    margin: '0',
+  },
 });
 
 const Dimmer = styled.div({
@@ -57,8 +63,8 @@ export const Modal = ({ open, children }: ModalProps) => {
       {open &&
         portal(
           <>
-            <ModalWrap>
-              <ModalContainer>{children}</ModalContainer>
+            <ModalWrap className="modal-wrap">
+              <ModalContainer className="modal">{children}</ModalContainer>
             </ModalWrap>
             <Dimmer className="dimmer" />
           </>,
