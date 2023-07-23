@@ -20,10 +20,8 @@ const Item = styled.span<TabItemProps>(props => ({
   },
 }));
 
-export const TabItem = ({ children, active }: TabItemProps) => {
+export const TabItem = (props: TabItemProps) => {
   return (
-    <Item className={`tab-item${active ? ' active' : ''}`} active={active}>
-      {children}
-    </Item>
+    <Item className={`tab-item${props.active ? ' active' : ''}`} {...props} />
   );
 };
