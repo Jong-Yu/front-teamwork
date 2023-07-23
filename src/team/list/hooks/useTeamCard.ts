@@ -6,7 +6,7 @@ export function useTeamCard() {
 
   // handler
   const onClickTeamCard = (teamId: string) => {
-    goPush(`/team/detail/${teamId}`);
+    goPush(`/team/detail/${teamId}/info`);
   };
 
   return {

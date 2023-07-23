@@ -8,7 +8,7 @@ const TeamRoutes = () => {
     <Routes>
       <Route path="*" element={<TeamPage />}>
         <Route path="list" element={<TeamListPage />} />
-        <Route path="detail/:teamId" element={<TeamDetailPage />} />
+        <Route path="detail/:teamId/:tabId" element={<TeamDetailPage />} />
         <Route path="*" element={<Navigate to="list" replace />} />
       </Route>
     </Routes>
