@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { FixedCreateButton } from '../components/FixedCreateButton';
+import { FixedCreateButton } from './components/FixedCreateButton';
 import { useSchedule } from './hooks/useSchedule';
 import { ScheduleEmpty } from './components/ScheduleEmpty';
 import { ScheduleCard } from './components/ScheduleCard';
+import { ScheduleCreateModal } from './create/ScheduleCreateModal';
 
 const Container = styled.div({});
 
@@ -25,6 +26,8 @@ export const Schedule = () => {
           <FixedCreateButton />
         </>
       )}
+
+      <ScheduleCreateModal />
     </Container>
   );
 };

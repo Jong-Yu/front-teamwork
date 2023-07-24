@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useScheduleEmpty } from '../create/hooks/useScheduleEmpty';
 
 const Conatiner = styled.div({
   display: 'flex',
@@ -16,6 +17,7 @@ const CreateButton = styled.button({
   height: '2.5rem',
   color: '#fff',
   marginBottom: '20px',
+  cursor: 'pointer',
 });
 
 const Span = styled.span({
@@ -24,9 +26,12 @@ const Span = styled.span({
 });
 
 export const ScheduleEmpty = () => {
+  // hooks
+  const { onClickCreateButton } = useScheduleEmpty();
+
   return (
     <Conatiner>
-      <CreateButton>일정 추가하기</CreateButton>
+      <CreateButton onClick={onClickCreateButton}>일정 추가하기</CreateButton>
       <Span>등록된 일정이 없습니다.</Span>
     </Conatiner>
   );
