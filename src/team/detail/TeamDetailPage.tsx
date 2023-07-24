@@ -3,9 +3,9 @@ import { Tab } from '../../_shared/ui/Tab/Tab';
 import { TabItem } from '../../_shared/ui/Tab/components/TabItem';
 import { useTeamDetail } from './hooks/useTeamDetail';
 import { Header } from './components/Header';
-import { Info } from './components/Info';
-import { Schedule } from './components/Schedule';
-import { Member } from './components/Member';
+import { Info } from './info/Info';
+import { Schedule } from './schedule/Schedule';
+import { Member } from './member/Member';
 
 const Container = styled.div({
   height: 'calc(100vh - 105px)',
@@ -13,6 +13,7 @@ const Container = styled.div({
 
 const Contents = styled.div({
   marginTop: '15px',
+  paddingLeft: '30px',
 });
 
 export const TeamDetailPage = () => {
