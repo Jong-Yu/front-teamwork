@@ -14,7 +14,7 @@ export const TeamList = () => {
   const { myTeams } = useTeamList();
 
   return (
-    <Container>
+    <Container className="container container--default">
       {(!myTeams || myTeams.length === 0) && <TeamEmpty />}
 
       {myTeams && myTeams.length > 0 && (

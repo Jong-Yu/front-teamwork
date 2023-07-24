@@ -10,6 +10,7 @@ function App() {
 
   return (
     <QueryClientProvider client={client}>
+      <div id="header" />
       <AppRoutes />
       <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
     </QueryClientProvider>

@@ -34,10 +34,6 @@ const TeamName = styled.span({
   userSelect: 'none',
 });
 
-const TeamDesc = styled.span({
-  userSelect: 'none',
-});
-
 interface TeamCardProps {
   team: TeamDto;
 }
@@ -53,7 +49,7 @@ export const TeamCard = ({ team }: TeamCardProps) => {
       </LogoContainer>
       <TeamInfoContainer>
         <TeamName>{team.name}</TeamName>
-        <TeamDesc>{team.desc}</TeamDesc>
+        {/* 나이별, 시간, 주요 장소에 대한 정보를 노출 (개발전) */}
       </TeamInfoContainer>
     </Card>
   );

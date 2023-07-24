@@ -13,10 +13,15 @@ const Item = styled.span<TabItemProps>(props => ({
   marginRight: '10px',
   userSelect: 'none',
   cursor: 'pointer',
-  borderBottom: props.active ? '2px solid #1570FF' : '2px solid #fff',
+  borderBottom: props.active ? '3px solid #1570FF' : '3px solid #fff',
+  fontSize: '1.3rem',
 
   '&:hover': {
     color: ' #282B33',
+  },
+
+  [`@media (max-width: ${import.meta.env.VITE_MOBILE_WIDTH})`]: {
+    fontSize: '1.2rem',
   },
 }));
 

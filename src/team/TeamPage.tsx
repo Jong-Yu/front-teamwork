@@ -1,5 +1,9 @@
+import styled from '@emotion/styled';
 import { Outlet } from 'react-router-dom';
-import { Container } from '../_shared/ui/Container/Container';
+
+const Container = styled.div({
+  backgroundColor: '#F8FAFB',
+});
 
 export const TeamPage = () => {
   return (

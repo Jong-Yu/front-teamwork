@@ -1,5 +1,10 @@
 import styled from '@emotion/styled';
 
+const Container = styled.div({
+  width: '100%',
+  background: 'white',
+});
+
 const StyledTab = styled.div({
   display: 'flex',
   flexDirection: 'row',
@@ -7,7 +12,9 @@ const StyledTab = styled.div({
   alignItems: 'center',
   width: '100%',
   height: '30px',
-  paddingLeft: '30px',
+  padding: '0 23px',
+  maxWidth: '1024px',
+  margin: '0 auto',
 });
 
 interface TabProps {
@@ -15,5 +22,9 @@ interface TabProps {
 }
 
 export const Tab = ({ children }: TabProps) => {
-  return <StyledTab>{children}</StyledTab>;
+  return (
+    <Container>
+      <StyledTab>{children}</StyledTab>
+    </Container>
+  );
 };

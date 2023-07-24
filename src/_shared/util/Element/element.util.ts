@@ -1,6 +1,10 @@
-export const getRootElement = (): HTMLElement => {
+export function getRootElement(): HTMLElement {
   return document.getElementById('root') as HTMLElement;
-};
+}
+
+export function getElementById(id: string): HTMLElement {
+  return document.getElementById(id) as HTMLElement;
+}
 
 /**
  * 현재 위치를 반환한다.
