@@ -1,13 +1,12 @@
-import { useSetAtom } from 'jotai';
-import { openAtom } from '../../create/TeamCreateModal.atom';
+import { useTeamCreateModal } from '../../create/hooks/useTeamCreateModal';
 
 export function useFixedCreateButton() {
   // atom
-  const setOpen = useSetAtom(openAtom);
+  const { onOpen } = useTeamCreateModal();
 
   // handler
   const onClickCreateButton = () => {
-    setOpen(true);
+    onOpen();
   };
 
   return {

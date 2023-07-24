@@ -17,6 +17,7 @@ const CreateButton = styled.button({
   height: '2.5rem',
   color: '#fff',
   marginBottom: '20px',
+  cursor: 'pointer',
 });
 
 const Span = styled.span({
