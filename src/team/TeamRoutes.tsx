@@ -1,18 +1,17 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { TeamPage } from './TeamPage';
 import { TeamListPage } from './list/TeamListPage';
-import { TeamCreatePage } from './create/TeamCreatePage';
+import { TeamDetailPage } from './detail/TeamDetailPage';
 
 const TeamRoutes = () => {
   return (
-    <>
-      <Routes>
-        <Route path="*" Component={TeamPage}>
-          <Route path="list" Component={TeamListPage} />
-          <Route path="create" Component={TeamCreatePage} />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route path="*" element={<TeamPage />}>
+        <Route path="list" element={<TeamListPage />} />
+        <Route path="detail/:teamId/:tabId" element={<TeamDetailPage />} />
+        <Route path="*" element={<Navigate to="list" replace />} />
+      </Route>
+    </Routes>
   );
 };
 

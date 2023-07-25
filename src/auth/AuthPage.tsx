@@ -1,14 +1,10 @@
-import { useAuthPage } from './hooks/useAuthPage';
+import { Outlet } from 'react-router-dom';
+import { Container } from '../_shared/ui/Container/Container';
 
 export const AuthPage = () => {
-  // hooks
-  const { onClickLoginKakao } = useAuthPage();
-
   return (
-    <div>
-      <h1>AuthPage</h1>
-
-      <button onClick={onClickLoginKakao}>KaKao Login</button>
-    </div>
+    <Container>
+      <Outlet />
+    </Container>
   );
 };

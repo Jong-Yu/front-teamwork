@@ -27,9 +27,9 @@ export async function loginKakao(code: string): Promise<string> {
 /**
  * 토큰 재발급
  */
-export async function refresh(): Promise<string> {
+export async function refresh(): Promise<void> {
   const { post, axiosReturn } = getAxios();
-  return post('/api/auth/refresh').then(axiosReturn);
+  post('/api/auth/refresh').then(axiosReturn);
 }
 
 /**

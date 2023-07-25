@@ -1,13 +1,13 @@
-import { useFindMyTeam } from '../../_query/team/TeamQuerys';
+import { TeamCreateModal } from '../create/TeamCreateModal';
+import { Header } from './components/Header';
+import { TeamList } from './components/TeamList';
 
 export const TeamListPage = () => {
-  // hooks
-  const { data: myTeams } = useFindMyTeam();
-
   return (
     <>
-      <h1>TeamListPage</h1>
-      <div>{myTeams?.map(team => team.id)}</div>
+      <Header />
+      <TeamList />
+      <TeamCreateModal />
     </>
   );
 };

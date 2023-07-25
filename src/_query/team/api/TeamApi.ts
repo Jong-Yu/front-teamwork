@@ -13,3 +13,11 @@ export function findMyTeam() {
 
   return get<TeamDto[]>('/api/team/findMyTeam').then(axiosReturn);
 }
+
+export function findTeamById(teamId: string) {
+  const { get, axiosReturn } = getAxios();
+
+  return get<TeamDto>('/api/team/findTeamById', {
+    params: { id: teamId },
+  }).then(axiosReturn);
+}
