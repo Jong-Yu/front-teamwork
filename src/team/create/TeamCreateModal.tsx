@@ -21,7 +21,7 @@ export const TeamCreateModal = () => {
   return (
     <Modal open={open}>
       <Modal.Header onClose={onClose}>
-        <Title>{step === 1 ? '팀 이름' : name}</Title>;
+        <Title>{step === 1 ? '팀 이름' : name}</Title>
       </Modal.Header>
       <Modal.Contents>
         <ContentsContainer>
@@ -31,8 +31,12 @@ export const TeamCreateModal = () => {
         </ContentsContainer>
       </Modal.Contents>
       <Modal.Footer>
-        {step > 1 && <Button onClick={onPrev} />}
-        {step < 3 && <Button primary onClick={onNext} />}
+        {step > 1 && <Button onClick={onPrev}>이전</Button>}
+        {step < 3 && (
+          <Button primary onClick={onNext}>
+            다음
+          </Button>
+        )}
         {step === 3 && <CreateButton onClick={onCreate} />}
       </Modal.Footer>
     </Modal>

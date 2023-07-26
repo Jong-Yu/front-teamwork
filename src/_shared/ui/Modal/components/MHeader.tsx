@@ -41,8 +41,9 @@ interface MHeaderProps {
 export const MHeader = ({ children, onClose }: MHeaderProps) => {
   return (
     <Header>
-      <Container>{children}</Container>
-      <ExitButton onClick={onClose} />
+      <Container>
+        {children} <ExitButton onClick={onClose} />
+      </Container>
     </Header>
   );
 };
