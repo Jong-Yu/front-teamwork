@@ -5,11 +5,11 @@ import { CreateUserDTO } from '../models/CreateUserDTO';
 export function getUsers(): Promise<UesrDTO[]> {
   const { get, axiosReturn } = getAxios();
 
-  return get('/api/user').then(axiosReturn);
+  return get('api/user').then(axiosReturn);
 }
 
 export function createUesr(createUserDto: CreateUserDTO) {
   const { post, axiosReturn } = getAxios();
 
-  return post('/api/user/create', createUserDto).then(axiosReturn);
+  return post('/user/create', createUserDto).then(axiosReturn);
 }

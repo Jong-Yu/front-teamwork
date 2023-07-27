@@ -5,7 +5,7 @@ import { getAxios } from '../../../_shared/util/Axios/axios.util';
  */
 export async function isValidToken(): Promise<boolean> {
   const { get, axiosReturn } = getAxios();
-  return get('/api/auth/isvalid').then(axiosReturn);
+  return get('/auth/isvalid').then(axiosReturn);
 }
 
 /**
@@ -14,7 +14,7 @@ export async function isValidToken(): Promise<boolean> {
 export async function loginKakao(code: string): Promise<string> {
   const { post, axiosReturn } = getAxios();
   return post(
-    '/api/auth/kakao',
+    '/auth/kakao',
     { code },
     {
       headers: {
@@ -29,7 +29,7 @@ export async function loginKakao(code: string): Promise<string> {
  */
 export async function refresh(): Promise<void> {
   const { post, axiosReturn } = getAxios();
-  post('/api/auth/refresh').then(axiosReturn);
+  post('/auth/refresh').then(axiosReturn);
 }
 
 /**
@@ -37,5 +37,5 @@ export async function refresh(): Promise<void> {
  */
 export async function logout(): Promise<void> {
   const { post, axiosReturn } = getAxios();
-  return post('/api/auth/logout').then(axiosReturn);
+  return post('/auth/logout').then(axiosReturn);
 }

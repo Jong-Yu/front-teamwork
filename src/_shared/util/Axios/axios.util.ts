@@ -20,7 +20,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.get(url, config);
+      return axios.get(`https://teamwork.zeabur.app/${url}`, config);
     } catch {
       return Promise.resolve<R | undefined>(undefined);
     }
@@ -33,7 +33,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.post(url, data, config);
+      return axios.post(`https://teamwork.zeabur.app/${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -46,7 +46,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.put(url, data, config);
+      return axios.put(`https://teamwork.zeabur.app/${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -59,7 +59,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.patch(url, data, config);
+      return axios.patch(`https://teamwork.zeabur.app/${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -71,7 +71,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.delete(url, config);
+      return axios.delete(`https://teamwork.zeabur.app/${url}`, config);
     } catch {
       return Promise.resolve(undefined);
     }

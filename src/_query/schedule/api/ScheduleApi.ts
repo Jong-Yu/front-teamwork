@@ -5,7 +5,7 @@ export function findScheduleById(teamId: string) {
   // hooks
   const { get, axiosReturn } = getAxios();
 
-  return get<ScheduleDto[]>('/api/schedule/findScheduleById', {
+  return get<ScheduleDto[]>('/schedule/findScheduleById', {
     params: { teamId },
   }).then(axiosReturn);
 }
