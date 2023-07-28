@@ -21,12 +21,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.get(
-        `${
-          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
-        }${url}`,
-        config,
-      );
+      return axios.get(`https://teamwork.zeabur.app${url}`, config);
     } catch {
       return Promise.resolve<R | undefined>(undefined);
     }
@@ -39,13 +34,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.post(
-        `${
-          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
-        }${url}`,
-        data,
-        config,
-      );
+      return axios.post(`https://teamwork.zeabur.app${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -58,13 +47,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.put(
-        `${
-          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
-        }${url}`,
-        data,
-        config,
-      );
+      return axios.put(`https://teamwork.zeabur.app${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -77,13 +60,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.patch(
-        `${
-          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
-        }${url}`,
-        data,
-        config,
-      );
+      return axios.patch(`https://teamwork.zeabur.app${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -95,12 +72,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.delete(
-        `${
-          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
-        }${url}`,
-        config,
-      );
+      return axios.delete(`https://teamwork.zeabur.app${url}`, config);
     } catch {
       return Promise.resolve(undefined);
     }
