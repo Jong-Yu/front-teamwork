@@ -13,6 +13,7 @@ function paramsSerializer(paramObj: Record<string, any>) {
 
 export function getAxios() {
   axios.defaults.paramsSerializer = paramsSerializer;
+  axios.defaults.withCredentials = true;
 
   // HTTP GET 요청을 처리하는 함수
   const get = <T = any, R = AxiosResponse<T>>(
@@ -20,7 +21,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.get(`https://teamwork.zeabur.app${url}`, config);
+      return axios.get(`/api${url}`, config);
     } catch {
       return Promise.resolve<R | undefined>(undefined);
     }
@@ -33,7 +34,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.post(`https://teamwork.zeabur.app${url}`, data, config);
+      return axios.post(`/api${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -46,7 +47,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.put(`https://teamwork.zeabur.app${url}`, data, config);
+      return axios.put(`/api${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -59,7 +60,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.patch(`https://teamwork.zeabur.app${url}`, data, config);
+      return axios.patch(`/api${url}`, data, config);
     } catch {
       return Promise.resolve(undefined);
     }
@@ -71,7 +72,7 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.delete(`https://teamwork.zeabur.app${url}`, config);
+      return axios.delete(`/api${url}`, config);
     } catch {
       return Promise.resolve(undefined);
     }
