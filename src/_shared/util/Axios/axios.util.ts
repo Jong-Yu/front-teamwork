@@ -21,7 +21,12 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.get(`/api${url}`, config);
+      return axios.get(
+        `${
+          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
+        }${url}`,
+        config,
+      );
     } catch {
       return Promise.resolve<R | undefined>(undefined);
     }
@@ -34,7 +39,13 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.post(`/api${url}`, data, config);
+      return axios.post(
+        `${
+          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
+        }${url}`,
+        data,
+        config,
+      );
     } catch {
       return Promise.resolve(undefined);
     }
@@ -47,7 +58,13 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.put(`/api${url}`, data, config);
+      return axios.put(
+        `${
+          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
+        }${url}`,
+        data,
+        config,
+      );
     } catch {
       return Promise.resolve(undefined);
     }
@@ -60,7 +77,13 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.patch(`/api${url}`, data, config);
+      return axios.patch(
+        `${
+          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
+        }${url}`,
+        data,
+        config,
+      );
     } catch {
       return Promise.resolve(undefined);
     }
@@ -72,7 +95,12 @@ export function getAxios() {
     config?: AxiosRequestConfig,
   ): Promise<R | undefined> => {
     try {
-      return axios.delete(`/api${url}`, config);
+      return axios.delete(
+        `${
+          import.meta.env.PROD ? import.meta.env.VITE_PROD_API_URL : '/api'
+        }${url}`,
+        config,
+      );
     } catch {
       return Promise.resolve(undefined);
     }
