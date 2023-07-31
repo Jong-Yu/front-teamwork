@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { SearchPlaces } from '../model/SearchPlaces';
 
-export function searchKeyWord(keyword: string) {
+export async function searchKeyWord(keyword: string) {
   // 검색 결과를 가져옵니다.
   return axios
     .get<SearchPlaces>(
@@ -10,6 +10,7 @@ export function searchKeyWord(keyword: string) {
         headers: {
           Authorization: `KakaoAK ${import.meta.env.VITE_KAKAO_REST_API_KEY}`,
         },
+        withCredentials: false,
       },
     )
     .then(res => res.data);

@@ -10,8 +10,8 @@ export const TeamListPage = () => {
       <Test />
       <Map />
       <Header />
-      <TeamList />
-      <TeamCreateModal />
+      {/* <TeamList /> */}
+      {/* <TeamCreateModal /> */}
     </>
   );
 };
