@@ -12,7 +12,7 @@ const Image = styled.img({
 });
 
 export const KakaoLogin = () => {
-  const clientId = import.meta.env.VITE_KAKAO_CLIENT_ID;
+  const clientId = import.meta.env.VITE_KAKAO_REST_API_KEY;
   const redirectUri = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
   return (
