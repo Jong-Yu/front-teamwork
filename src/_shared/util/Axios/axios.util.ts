@@ -193,5 +193,7 @@ export function initAxios(refresh: () => Promise<void>) {
 }
 
 function makeUrl(url: string) {
-  return url.startsWith('https://') ? url : `https://teamwork.zeabur.app${url}`;
+  return import.meta.env.PROD
+    ? `https://teamwork.zeabur.app${url}`
+    : `/api${url}`;
 }

@@ -15,12 +15,18 @@
     <script>
       Kakao.init('d4c32e13d15d331c0d680ce27d245b24');
     </script>
+    <link rel="manifest" href="/manifest.json" />
+    <title>Team Work</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
     <script>
       if ('serviceWorker' in navigator) {
         // Register a service worker hosted at the root of the
         // site using the default scope.
         navigator.serviceWorker
-          .register('/service-worker.js')
+          .register('/sw.js')
           .then(registration => {
             console.log('Service worker registration succeeded:', registration);
           })
@@ -31,10 +37,5 @@
         console.log('Service workers are not supported.');
       }
     </script>
-    <title>Team Work</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
