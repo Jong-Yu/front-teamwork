@@ -3,7 +3,11 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { AppRoutes } from './AppRoutes';
 import { initApp } from './App.util';
 
-const client = new QueryClient();
+const client = new QueryClient({
+  defaultOptions: {
+    queries: { refetchOnWindowFocus: false },
+  },
+});
 
 function App() {
   initApp();
