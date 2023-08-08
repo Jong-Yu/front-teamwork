@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-import { UIRoutes } from './_ui/UIRoutes';
+import { UIRoutes } from './_shared/ui/UIRoutes';
 
 const AuthRoutes = lazy(() => import('./auth/AuthRoutes'));
 const TeamRoutes = lazy(() => import('./team/TeamRoutes'));

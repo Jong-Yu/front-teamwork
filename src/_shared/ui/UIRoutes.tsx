@@ -4,7 +4,7 @@ import { Calendar } from './Calendar/Calendar';
 export const UIRoutes = () => {
   return (
     <Routes>
-      <Route path="selectDate" element={<Calendar />} />
+      <Route path="calendar" element={<Calendar />} />
     </Routes>
   );
 };

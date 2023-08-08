@@ -5,18 +5,22 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
 }
 
-const StyledInput = styled.input<InputProps>(props => ({
-  width: '100%',
-  height: '2.5rem',
-  borderRadius: '5px',
-  padding: '0 10px',
-  border: '1.6px solid #000',
-  borderColor: props.error ? '#ff0000' : '#000',
-
-  '&:focus': {
-    outlineColor: props.error ? '#ff0000' : '#1570FF',
+const StyledInput = styled.input(
+  {
+    width: '100%',
+    height: '2.5rem',
+    borderRadius: '5px',
+    padding: '0 10px',
+    border: '1.6px solid #000',
   },
-}));
+  (props: InputProps) => ({
+    borderColor: props.error ? '#ff0000' : '#000',
+
+    '&:focus': {
+      outlineColor: props.error ? '#ff0000' : '#1570FF',
+    },
+  }),
+);
 
 // forwardRef와 Generics를 사용하여 ref를 props로 받을 수 있도록 합니다.
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
