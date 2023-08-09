@@ -1,34 +1,15 @@
 import styled from '@emotion/styled';
 import { Dayjs } from 'dayjs';
 import { useHeader } from '../hooks/useHeader';
+import { Next } from './Next';
+import { Prev } from './Prev';
 
 const StyledHeader = styled.div({
   display: 'flex',
-  justifyContent: 'center',
-  alignContent: 'center',
+  justifyContent: 'space-between',
+  alignItems: 'center',
   margin: '20px',
 });
-
-// .thisMonth {
-//     font-weight: 700;
-//     color: #292929;
-//     line-height: 24px;
-//     user-select: none;
-//   }
-//   button {
-//     width: 24px;
-//     margin: 0 8px;
-//   }
-//   .previous_icon {
-//     width: 24px;
-//     height: 24px;
-//     background: url('') center no-repeat;
-//   }
-//   .next_icon {
-//     width: 24px;
-//     height: 24px;
-//     background: url('') center no-repeat;
-//   }
 
 interface HeaderProps {
   viewDate: Dayjs;
@@ -40,15 +21,9 @@ export const Header = ({ viewDate, onChangeViewDate }: HeaderProps) => {
 
   return (
     <StyledHeader>
-      <button
-        className="previous_icon"
-        onClick={() => onClickPrev(viewDate, onChangeViewDate)}
-      />
+      <Prev onClick={() => onClickPrev(viewDate, onChangeViewDate)} />
       <span className="thisMonth">{viewDate.format('MM')}월</span>
-      <button
-        className="next_icon"
-        onClick={() => onClickNext(viewDate, onChangeViewDate)}
-      />
+      <Next onClick={() => onClickNext(viewDate, onChangeViewDate)} />
     </StyledHeader>
   );
 };

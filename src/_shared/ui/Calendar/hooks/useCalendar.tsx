@@ -1,14 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { debounce } from 'lodash';
-import { Row } from '../components/Row';
-import { Date } from '../components/Date';
 
-export function useCalendar() {
+interface UseCalendarProps {
+  value: Dayjs;
+  onChange: (date: Dayjs) => void;
+}
+
+export function useCalendar({ value, onChange }: UseCalendarProps) {
   // state
   const [viewDate, setViewDate] = useState(dayjs());
-  const [selectDate, setSelectDate] = useState(dayjs());
   const [width, setWidth] = useState(window.innerWidth);
+  const [open, setOpen] = useState(false);
 
   // ref
   const selectedDateRef = useRef<HTMLDivElement>(null);
@@ -16,11 +19,13 @@ export function useCalendar() {
 
   // handler
   const onChangeViewDate = (day: Dayjs) => {
+    if (!open) setOpen(true);
     setViewDate(day);
   };
 
   const onChangeSelectDate = (day: Dayjs) => {
-    setSelectDate(day);
+    onChange(day);
+    setOpen(prev => !prev);
   };
 
   const onChangeResize = debounce(() => {
@@ -28,14 +33,23 @@ export function useCalendar() {
   });
 
   useEffect(() => {
-    if (selectedDateRef.current === null || bgRef.current === null) return;
+    if (bgRef.current === null) return;
+    if (selectedDateRef.current === null) {
+      bgRef.current.style.display = 'none';
+      return;
+    }
 
-    const x = selectedDateRef.current.offsetLeft - 3;
-    const y = selectedDateRef.current.offsetTop - 23;
+    if (bgRef.current.style.transform === '') {
+      bgRef.current.style.display = 'none';
+    }
+
+    const x = selectedDateRef.current.offsetLeft - (open ? 3 : 4);
+    const y = selectedDateRef.current.offsetTop - (open ? 23 : 53);
 
     bgRef.current.style.transition = 'transform 0.3s';
     bgRef.current.style.transform = `translate(${x}px, ${y}px)`;
-  }, [selectDate, selectedDateRef, bgRef, width]);
+    bgRef.current.style.display = 'block';
+  }, [viewDate, value, selectedDateRef, bgRef, width]);
 
   useEffect(() => {
     window.addEventListener('resize', onChangeResize);
@@ -54,46 +68,40 @@ export function useCalendar() {
       viewDate.endOf('month').week() === 1
         ? 53
         : viewDate.endOf('month').week();
-    const calendar = [];
+    const calendar: Dayjs[][] = [];
 
-    // 캘린더 행 생성
-    for (let week = startWeek; week <= endWeek; week++) {
-      const currentWeek = viewDate.startOf('week').week(week);
-      if (viewDate.format('MM') === '12' && week === 1) {
-        currentWeek.week(week - 52);
+    if (open) {
+      // 캘린더 행 생성
+      for (let week = startWeek; week <= endWeek; week++) {
+        const currentWeek = viewDate.startOf('week').week(week);
+        if (viewDate.format('MM') === '12' && week === 1) {
+          currentWeek.week(week - 52);
+        }
+        const weekDays = Array.from({ length: 7 }, (_, i) =>
+          currentWeek.add(i, 'day'),
+        );
+        calendar.push(weekDays);
       }
+    } else {
+      const currentWeek = value.startOf('week');
+
       const weekDays = Array.from({ length: 7 }, (_, i) =>
         currentWeek.add(i, 'day'),
       );
-      calendar.push(
-        <Row key={week}>
-          {weekDays.map(day => {
-            const isSelected = selectDate.isSame(day, 'day');
-            const isNone = day.format('MM') !== viewDate.format('MM');
 
-            return (
-              <Date
-                ref={isSelected ? selectedDateRef : null}
-                key={day.format('YYYYMMDD')}
-                current={day}
-                isSelected={isSelected}
-                isNone={isNone}
-                onClickDate={onChangeSelectDate}
-              />
-            );
-          })}
-        </Row>,
-      );
+      calendar.push(weekDays);
     }
 
     return calendar;
-  }, [viewDate, selectDate]);
+  }, [viewDate, value]);
 
   return {
+    open,
     viewDate,
-    selectDate,
+    value,
     dates,
     bgRef,
+    selectedDateRef,
     onChangeViewDate,
     onChangeSelectDate,
   };

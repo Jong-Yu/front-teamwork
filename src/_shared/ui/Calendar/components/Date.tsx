@@ -6,6 +6,8 @@ interface DateProps {
   current: Dayjs;
   isSelected: boolean;
   isNone: boolean;
+  isSaturday: boolean;
+  isHolyday: boolean;
   onClickDate: (day: Dayjs) => void;
   ref?: React.Ref<HTMLDivElement>;
 }
@@ -33,14 +35,31 @@ const Span = styled.span(
     cursor: 'pointer',
     position: 'relative',
   },
-  (props: { isSelected: boolean }) => ({
-    color: props.isSelected ? '#fff' : '#000',
+  (props: {
+    isSelected: boolean;
+    isSaturday?: boolean;
+    isHolyday?: boolean;
+  }) => ({
+    color: props.isSelected
+      ? '#fff'
+      : props.isSaturday
+      ? '#1570ff'
+      : props.isHolyday
+      ? '#ff1515'
+      : '#000',
   }),
 );
 
 export const Date = React.forwardRef(
   (
-    { current, isSelected, isNone, onClickDate }: DateProps,
+    {
+      current,
+      isSelected,
+      isSaturday,
+      isHolyday,
+      isNone,
+      onClickDate,
+    }: DateProps,
     ref: React.Ref<HTMLDivElement>,
   ) => {
     return (
@@ -51,7 +70,13 @@ export const Date = React.forwardRef(
             onClickDate(current);
           }}
         >
-          <Span isSelected={isSelected}>{current.format('D')}</Span>
+          <Span
+            isSelected={isSelected}
+            isSaturday={isSaturday}
+            isHolyday={isHolyday}
+          >
+            {current.format('D')}
+          </Span>
         </Div>
       </Box>
     );
